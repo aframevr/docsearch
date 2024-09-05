@@ -1,5 +1,5 @@
 import Hogan from 'hogan.js';
-import algoliasearch from 'algoliasearch/lite';
+// import algoliasearch from 'algoliasearch/lite';
 import autocomplete from 'autocomplete.js';
 import templates from './templates';
 import utils from './utils';
@@ -81,12 +81,12 @@ class DocSearch {
     this.autocompleteOptions.cssClasses.prefix =
       this.autocompleteOptions.cssClasses.prefix || 'ds';
     const inputAriaLabel = this.input && typeof this.input.attr === 'function' && this.input.attr('aria-label');
-    this.autocompleteOptions.ariaLabel = 
+    this.autocompleteOptions.ariaLabel =
       this.autocompleteOptions.ariaLabel || inputAriaLabel || "search input";
 
     this.isSimpleLayout = layout === 'simple';
 
-    this.client = algoliasearch(this.appId, this.apiKey);
+    this.client = algoliasearch.algoliasearch(this.appId, this.apiKey);
     this.client.addAlgoliaAgent(`docsearch.js ${version}`);
 
     if (enhancedSearchInput) {
